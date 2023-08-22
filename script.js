@@ -1,47 +1,55 @@
-// Your Script here.
+function rot13(str) { // LBH QVQ VG!
+  
+  var arr = str.split("");
 
-const lookup = {
-  A: "N",
-  B: "O",
-  C: "P",
-  D: "Q",
-  E: "R",
-  F: "S",
-  G: "T",
-  H: "U",
-  I: "V",
-  J: "W",
-  K: "X",
-  L: "Y",
-  M: "Z",
-  N: "A",
-  O: "B",
-  P: "C",
-  Q: "D",
-  R: "E",
-  S: "F",
-  T: "G",
-  U: "H",
-  V: "I",
-  W: "J",
-  X: "K",
-  Y: "L",
-  Z: "M",
-  "?": "?",
-  ",": ",",
-};
+  var nstaar = new Array(arr.length);
+  
+  var p = [];
+  
+  //loop for changing letters into their code
+  for(var i = 0; i < arr.length; i++){
+    for(var k = 0; k <arr[1].length; k++){
+        
+      nstaar[i] = arr[i].charCodeAt(k);
+      p.push(nstaar[i]);
+      k++;
 
-function rot13(encodedStr) {
-  let decodedArr = []; // Your Result goes here
-  // Only change code below this line
-	
+    }
+  }
+  var nstaar2 = new Array(p.length);
+  var p2 = [];
+  
+   for(var ii = 0; ii < arr.length; ii++){
+    for(var ik = 0; ik <p.length; ik++){
+      
+        if(p[ik]>64 && p[ik]<=77){
+      nstaar2[ii] = String.fromCharCode(p[ik]+13);
+      p2.push(nstaar2[ii]);
+      ii++;
+        }
+      else if (p[ik]>77 && p[ik]<=90){
+        nstaar2[ii] = String.fromCharCode(p[ik]-13);
+      p2.push(nstaar2[ii]);
+      ii++;
+      }else{
+          nstaar2[ii] = String.fromCharCode(p[ik]);
+      p2.push(nstaar2[ii]);
+      ii++;
+      }
 
-  return lookup.encodedStr; //return decodedArr
+
+    }
+  }
+  
+  
+  
+
+
+  p2 = p2.join("");
+  p2 = p2.toString();
+  
+  'ABC'.charCodeAt(0); // returns 65
+  String.fromCharCode(65, 66, 67);  // "ABC"
+  
+  return p2;
 }
-
-// You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
-
-// console.log(rot13("SERR YBIR? NPPVBWBO"));
-
-// Do not change this line
-window.rot13 = rot13;
